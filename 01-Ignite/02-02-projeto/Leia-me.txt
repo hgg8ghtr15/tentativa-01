@@ -1,0 +1,26 @@
+yarn init -y
+
+yarn add express
+
+yarn add @types/express -D
+
+yarn add typescript -D
+
+yarn tsc --init
+
+  "outDir" ./dist
+
+yarn tsc
+
+node .\dist\server.js
+
+yarn add ts-node-dev -D
+
+  "scripts": {
+    "dev":"ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+  },
+
+
+yarn add uuid
+  yarn add @types/uuid -D
+

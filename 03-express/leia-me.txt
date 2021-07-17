@@ -1,0 +1,13 @@
+***00
+npm -v
+
+***01
+npm init
+
+***02
+npm install express --save
+
+***04
+npm nodemon -g
+
+

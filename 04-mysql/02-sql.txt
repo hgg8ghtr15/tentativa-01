@@ -1,0 +1,48 @@
+mysql -h localhost -u root -p
+
+01
+SHOW DATABASES;
+
+02
+CREATE DATABASES SistemadeCasdastro;
+
+03
+USE SistemadeCasdastro;
+
+04
+CREATE TABLES usuario;
+
+05
+SHOW TABELS;
+
+06- criando tabela no banco de dados
+CREATE TABLE usuario(
+    name VARCHAR(50),
+    email VARCHAR(100),
+    idade INT
+);
+
+CREATE TABLE `sistemadecadastro`.`usuario` (
+  `idusuario` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `idade` INT NOT NULL,
+  PRIMARY KEY (`idusuario`));
+
+07
+DESCRIBE usuario;
+
+08- INSERT INTO
+INSERT INTO `sistemadecadastro`.`usuario` 
+    (`nome`, `email`, `idade`)
+    VALUES 
+    ('fantasma', 'fantasmavenson@gmail.com', '35');
+
+09-UPDATE
+UPDATE `sistemadecadastro`.`usuario` SET `idade` = '32' WHERE (`idusuario` = '2');
+
+10-SELECT
+SELECT * FROM `sistemadecadastro`.`usuario`
+
+11-DELETE
+DELETE FROM `sistemadecadastro`.`usuario` WHERE (`idusuario` = '2');

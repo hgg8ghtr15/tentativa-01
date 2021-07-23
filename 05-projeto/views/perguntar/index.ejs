@@ -1,0 +1,29 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+  <%- include("../partes/navebar.ejs") %>
+  
+  <!-- ini container -->
+  <div class="container">
+    <!-- ini card -->
+    <div class="card" id="formulario-perguntas">
+      <div class="card-header">
+        <h1>Formulario de perguntas</h1>
+      </div>
+      <!-- ini card  body -->
+      <div class="card-body">
+        <form method="POST" action="/salvarpergunta">
+          <label for="">Título</label>
+          <input type="text" class="form-control" name="titulo" id="">
+          <label for="">Descrição</label>
+          <textarea class="form-control" name="descricao" id="" cols="30" rows="10"></textarea>
+          <br>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div><!-- fim card  body -->
+    </div><!-- fim card -->
+  </div><!-- fim container -->
+
+</body>
+
+<%- include("../partes/footer.ejs") %>

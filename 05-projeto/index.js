@@ -1,53 +1,65 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const connect = require('./database/database')
+const Pergunta = require("./database/Pergunta")
+
+/**
+ * database conexão
+ */
+connect.authenticate()
+.then(() => {console.log("Conexão realizada com sucesso! ")})
+.catch((msgError) => {console.log(msgError)})
+
+/**
+ * 
+ * alter user "root"@"localhost" identified with mysql_native_password by "J6t2hybt26@"
+
+ */
 
 const app = express();
-
+/**
+ * configuração de paginas estaticas.
+*/
 app.set("view engine","ejs")
+app.use(express.static("public"))
+
+/**
+ * Modeulo para receber o post em body
+*/
+app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
 
 app.get("/", (request, response) => {
-  return response.render('index')
+  Pergunta.findAll({raw:true}).then(perguntas =>{
+    // console.log(perguntas)
+    response.render('index', {perguntas:perguntas})
+  })
 })
 
-app.get("/home", (request, response) => {
-  return response.render('principal/index')
+app.get("/listar", (request, response) => {
+  Pergunta.findAll({raw:true}).then(perguntas =>{
+    // console.log(perguntas)
+    response.render('perguntar/listar', {perguntas:perguntas})
+  })
 })
 
-app.get("/variavel", (request, response) => {
-  var nome = "fabio"
-  var idade = 32
-  return response.render('04-variaveis/index', {nome:nome, idade:idade})
+app.get("/perguntar", (request, response) => {
+  return response.render('perguntar/index')
 })
 
-app.get("/variavel/:nome/:idade", (request, response) => {
-  var {nome, idade} = request.params
-  return response.render('04-variaveis/index', {nome:nome, idade:idade})
-})
-
-app.get("/condicional/:nome", (request, response)=>{
-  var {nome} = request.params
-  var exibirmsg = false
+app.post("/salvarpergunta", (request, response)=>{
+  const {titulo, descricao} =  request.body
   
-  if (nome){
-    exibirmsg = true
-  }
-
-  return response.render("05-condicional/index", 
+  Pergunta.create(
     {
-      exibirmsg: exibirmsg,
-      nome: nome
-    }
-  )
+      titulo:titulo, 
+      descricao:descricao
+    }).then(() => {
+      response.redirect("/")
+    })
+  // return response.redirect("/listar")
 })
-
-app.get("/repeticao", (request, response)=>{
-
-  var produtos = [
-    { nome:"Coca-cola",valor: 10 },
-    { nome:"Fanta",valor: 5 }
-  ]
-  return response.render("06-repeticao/index", {produtos: produtos})
-})
-
 app.listen(4000,()=>{
   console.log("Servidor online")
 })

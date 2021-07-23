@@ -1,0 +1,26 @@
+<%- include("../partes/header.ejs") %>
+<body>
+  <%- include("../partes/navebar.ejs") %>
+  
+  <!-- ini container -->
+  <div class="container">
+    <hr>
+    <h1 >Lista de Perguntas</h1>
+    <hr>
+    <a href="/perguntar"class="navbar-brand btn btn-primary">Perguntar</a>
+    <!-- ini card -->
+    <% perguntas.forEach(pergunta => { %>
+    <div class="card" id="formulario-perguntas">
+        <div class="card-body">
+          <h3><%= pergunta.titulo %></h3>
+        </div>
+        <!-- ini card  body -->
+        <div class="card-footer">
+          <button type="button" class="btn btn-primary">Responder</button>
+        </div><!-- fim card  body -->
+      </div><!-- fim card -->
+      <% }) %>
+  </div><!-- fim container -->
+
+</body>
+<%- include("../partes/footer.ejs") %>

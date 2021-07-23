@@ -1,0 +1,50 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+  <%- include("../partes/navebar.ejs") %>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex justify-content-between">
+          <h3>Patrimonio</h3>
+          
+          <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="text" class="form-control" id="inputPassword2" placeholder="Pesquisar">
+            </div>
+          </form>
+          <a class="btn btn-primary" href="/patrimonio/cadastrar">Adicionar</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Número</th>
+              <th>Tipo</th>
+              <th>Local</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% patrimonios.forEach( patrimonio => { %>
+              <tr>
+                <th><%= patrimonio.id %></th>
+                <td><%= patrimonio.nome %></td>
+                <td><%= patrimonio.numero %></td>
+                <td><%= patrimonio.tipo %></td>
+                <td><%= patrimonio.local %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>   
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+<%- include("../partes/footer.ejs") %>

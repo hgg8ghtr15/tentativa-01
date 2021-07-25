@@ -1,0 +1,36 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+  <%- include("../partes/navebar.ejs") %>
+  
+  <!-- ini container -->
+  <div class="container">
+    <!-- ini card -->
+    <div class="card" id="formulario-perguntas">
+      <div class="card-header">
+        <h1>Titulo: <%= pergunta.titulo %></h1>
+      </div>
+      <!-- ini card  body -->
+      <div class="card-body">
+        <p>Descrição: <%= pergunta.descricao %></p>
+        <form method="post" action="">
+          <label for="">Resposta:</label>
+          <textarea class="form-control" name="corpo" id="" cols="30" rows="10"></textarea>
+          <input type="hidden" class="form-control hidden" name="perguntaid" value="<%= pergunta.id %>">
+          <br>
+          <button type="submit" class="btn btn-primary">Responder</button>
+          <a href="/listar" class="btn btn-primary">Voltar</a>
+        </form>
+      </div><!-- fim card  body -->
+      <div class="card-footer">
+        <h3>Respostas</h3>
+        <hr>
+        <% respostas.forEach(resposta =>{ %>
+          <p><%= resposta.corpo %></p>
+        <% }) %>        
+      </div>
+    </div><!-- fim card -->
+  </div><!-- fim container -->
+</body>
+
+<%- include("../partes/footer.ejs") %>

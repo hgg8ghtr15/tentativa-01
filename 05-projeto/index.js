@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connect = require('./database/database')
 const Pergunta = require("./database/Pergunta")
+const Resposta = require("./database/Resposta")
 
 /**
  * database conexão
@@ -38,8 +39,10 @@ app.get("/", (request, response) => {
 })
 
 app.get("/listar", (request, response) => {
-  Pergunta.findAll({raw:true}).then(perguntas =>{
-    // console.log(perguntas)
+  Pergunta.findAll({raw:true, order:[ 
+    ["id", "DESC"]
+    ]}).then(perguntas =>{
+    // console.log(perguntas)  DESC = DECRESENTE | ASC = CRESENTE
     response.render('perguntar/listar', {perguntas:perguntas})
   })
 })
@@ -60,7 +63,48 @@ app.post("/salvarpergunta", (request, response)=>{
     })
   // return response.redirect("/listar")
 })
+
+app.get("/pergunta/:id", (request, response) => {
+  const id = request.params.id
+  
+  console.log(id)
+
+  Pergunta.findOne({
+    raw:true,
+    where:{id:id} 
+  }).then(pergunta => {
+    if(pergunta){
+      Resposta.findAll({
+        raw:true,
+        where:{perguntaid:id},
+        order:[
+          ["id","DESC"]
+        ]
+      }).then(respostas => {
+        return response.render("perguntar/pergunta",{pergunta:pergunta, respostas:respostas});
+      })
+    }else{
+      console.log("Pergunta não encontrada.")
+      response.redirect("/pergunta/"+id)
+    }
+  })
+})
 app.listen(4000,()=>{
   console.log("Servidor online")
 })
 
+app.post("/pergunta/:id", (request, response)=>{
+  const id = request.params.id
+  const {corpo} = request.body
+
+  console.log(typeof(id))
+
+  Resposta.create(
+    {
+      corpo:corpo,
+      perguntaid:id
+    }).then(()=>{
+    response.redirect("/pergunta/"+id)
+    // response.redirect("/pergunta/"+id)
+  })
+})

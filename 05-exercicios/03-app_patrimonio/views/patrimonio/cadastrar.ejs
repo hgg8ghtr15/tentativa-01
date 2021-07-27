@@ -1,0 +1,103 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+<%- include("../partes/navebar.ejs") %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-11">
+                    <h3 class="">Cadastro de Patrimonio</h3>
+                </div>
+                <div class="col-1">
+                    <a href="/patrimonio/listar" class="btn btn-primary">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label>Nº Patrimônio</label>
+                        <input type="text" class="form-control" placeholder="Nº Patrimônio">
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Setor</label>
+                        <div class="input-group">
+                            <select type="text" class="form-control" placeholder="Setor">
+                                <option selected="selected" value="">Setor X</option>
+                                <option value="">Setor A</option>
+                                <option value="">Setor B</option>
+                            </select>
+                            <div class="input-group-prepend">
+                                <a href="#" class="btn btn-primary">+</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Tipo</label>
+                        <input type="text" class="form-control" placeholder="Tipo">
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Marca</label>
+                        <div class="input-group">
+                            <select type="text" class="form-control" placeholder="Marca">
+                                <option selected="selected" value="">Marca X</option>
+                                <option value="">Marca A</option>
+                                <option value="">Marca B</option>
+                            </select>
+                            <div class="input-group-prepend">
+                                <a href="#" class="btn btn-primary">+</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Modelo</label>
+                        <input type="text" class="form-control" placeholder="Modelo">
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Responsável</label>
+                        <div class="input-group">
+                            <select type="text" class="form-control" placeholder="Responsável">
+                                <option selected="selected" disabled="disabled" value="">Usuário X</option>
+                                <option value="">Usuário A</option>
+                                <option value="">Usuário B</option>
+                            </select>
+                            <div class="input-group-prepend">
+                                <a href="#" class="btn btn-primary">+</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Aquisição</label>
+                        <input type="date" class="form-control" placeholder="Modelo">
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Valor</label>
+                        <input type="number" class="form-control" placeholder="Valor">
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label>Nº Serie</label>
+                        <input type="text" class="form-control" placeholder="Nº Serie">
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label>Observações</label>
+                        <textarea class="form-control" placeholder="Observações" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<%- include("../partes/footer.ejs") %>

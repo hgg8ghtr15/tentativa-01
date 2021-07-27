@@ -1,0 +1,49 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+    <%- include("../partes/navebar.ejs") %>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-3">
+                        <h3 class="">Patrimonio</h3>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="col-1">
+                        <a href="/patrimonio/cadastrar" class="btn btn-primary">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nº Patri</th>
+                            <th>Setor</th>
+                            <th>Loja</th>
+                            <th>Tipo</th>
+                            <th>Usuário</th>
+                            <th>Valor</th>
+                            <th>Modelo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>001</th>
+                            <th>Ti</th>
+                            <th>Loja 4</th>
+                            <th>Impressora</th>
+                            <th>Fábio</th>
+                            <th>3.500</th>
+                            <th>Modelo HP</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("../partes/footer.ejs") %>
